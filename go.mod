@@ -1,3 +1,3 @@
-module github.com/yeencloud/tpl-library
+module github.com/yeencloud/shared
 
 go 1.23
