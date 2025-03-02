@@ -61,7 +61,6 @@ func (c *Context) Logs() []map[string]interface{} {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 	return c.logs
-
 }
 
 // Range iterates over all key-value pairs
