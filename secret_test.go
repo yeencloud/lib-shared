@@ -12,7 +12,11 @@ func TestSecret(t *testing.T) {
 
 		value string
 	}{
-		// TODO: Add test cases.
+		{
+			test: "Some secret value",
+
+			value: "1234567890",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.test, func(t *testing.T) {
