@@ -1,4 +1,4 @@
-module github.com/yeencloud/shared
+module github.com/yeencloud/lib-shared
 
 go 1.23
 
