@@ -5,7 +5,7 @@ type Secret struct {
 }
 
 func (s Secret) String() string {
-	return "****"
+	return "***"
 }
 
 func NewSecret(value string) Secret {
