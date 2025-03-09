@@ -43,5 +43,9 @@ func (l Path) Root() Path {
 
 func (l Path) MetricKey() string {
 	key := l.String()
-	return strings.ReplaceAll(key[len(l.Root().String())+1:], ".", "_")
+
+	replaced := strings.ReplaceAll(key, ".", "_")
+
+	return replaced
+	//	return strings.ReplaceAll(key[len(l.Root().String()):], ".", "_")
 }
