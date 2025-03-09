@@ -52,6 +52,9 @@ func (c *Context) WithValue(key, value interface{}) {
 }
 
 func (c *Context) WithLog(value map[string]interface{}) {
+	if value == nil {
+		return
+	}
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.logs = append(c.logs, value)

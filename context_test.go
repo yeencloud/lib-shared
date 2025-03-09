@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // TestNewCustomContext checks if a new CustomContext is created correctly.
@@ -191,5 +193,64 @@ func TestCancelAfterTimeout(t *testing.T) {
 
 	if ctx.Err().Error() != "timeout occurred" {
 		t.Errorf("Expected 'timeout occurred', got %v", ctx.Err())
+	}
+}
+
+func TestContext_Logs(t *testing.T) {
+	tests := []struct {
+		name          string
+		log           map[string]interface{}
+		expectedValue []map[string]interface{}
+	}{
+		{
+			name:          "no log",
+			log:           nil,
+			expectedValue: nil,
+		},
+		{
+			name: "log",
+			log:  map[string]interface{}{"key": "value"},
+			expectedValue: []map[string]interface{}{
+				{"key": "value"},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			sharedcontext := &Context{}
+
+			sharedcontext.WithLog(tt.log)
+
+			assert.Equal(t, tt.expectedValue, sharedcontext.logs)
+		})
+	}
+}
+
+func TestContext_WithLog(t *testing.T) {
+	tests := []struct {
+		name     string
+		context  Context
+		expected []map[string]interface{}
+	}{
+		{
+			name:     "no log",
+			context:  Context{},
+			expected: nil,
+		},
+		{
+			name:     "log",
+			context:  Context{logs: []map[string]interface{}{{"key": "value"}}},
+			expected: []map[string]interface{}{{"key": "value"}},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			sharedcontext := &Context{
+				logs: tt.context.logs,
+			}
+
+			assert.Equal(t, tt.expected, sharedcontext.Logs())
+		})
 	}
 }
