@@ -33,7 +33,7 @@ func NewConfig(sourceInterface SourceConfig) *Config {
 	return config
 }
 
-func (cfg *Config) availableTypes() []string {
+func (cfg *Config) AvailableTypes() []string {
 	types := make([]string, 0, len(cfg.typeMap))
 	for k := range cfg.typeMap {
 		types = append(types, k.String())
