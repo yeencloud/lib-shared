@@ -1,4 +1,4 @@
-package log
+package namespace
 
 import (
 	"testing"
@@ -9,25 +9,25 @@ import (
 func TestMetricKey(t *testing.T) {
 	tests := []struct {
 		name   string
-		path   Path
+		path   Namespace
 		expect string
 	}{
 		{
 			name:   "no key",
-			path:   Path{},
+			path:   Namespace{},
 			expect: "unknown",
 		},
 		{
 			name: "no parent",
-			path: Path{
+			path: Namespace{
 				Identifier: "test",
 			},
 			expect: "test",
 		},
 		{
 			name: "with parent",
-			path: Path{
-				Parent: &Path{
+			path: Namespace{
+				Parent: &Namespace{
 					Identifier: "parent",
 				},
 				Identifier: "test",
@@ -46,34 +46,34 @@ func TestMetricKey(t *testing.T) {
 func TestRoot(t *testing.T) {
 	tests := []struct {
 		name   string
-		path   Path
-		expect Path
+		path   Namespace
+		expect Namespace
 	}{
 		{
 			name: "no parent",
-			path: Path{
+			path: Namespace{
 				Identifier: "test",
 			},
-			expect: Path{
+			expect: Namespace{
 				Identifier: "test",
 			},
 		},
 		{
 			name: "with parent",
-			path: Path{
-				Parent: &Path{
+			path: Namespace{
+				Parent: &Namespace{
 					Identifier: "parent",
 				},
 				Identifier: "test",
 			},
-			expect: Path{
+			expect: Namespace{
 				Identifier: "parent",
 			},
 		},
 		{
 			name:   "nothing",
-			path:   Path{},
-			expect: Path{},
+			path:   Namespace{},
+			expect: Namespace{},
 		},
 	}
 
@@ -87,20 +87,20 @@ func TestRoot(t *testing.T) {
 func TestString(t *testing.T) {
 	tests := []struct {
 		name   string
-		path   Path
+		path   Namespace
 		expect string
 	}{
 		{
 			name: "no parent",
-			path: Path{
+			path: Namespace{
 				Identifier: "test",
 			},
 			expect: "test",
 		},
 		{
 			name: "with parent",
-			path: Path{
-				Parent: &Path{
+			path: Namespace{
+				Parent: &Namespace{
 					Identifier: "parent",
 				},
 				Identifier: "test",
@@ -109,8 +109,8 @@ func TestString(t *testing.T) {
 		},
 		{
 			name: "no identifier",
-			path: Path{
-				Parent: &Path{
+			path: Namespace{
+				Parent: &Namespace{
 					Identifier: "parent",
 				},
 			},
