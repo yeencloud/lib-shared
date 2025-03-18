@@ -18,7 +18,7 @@ type Namespace struct {
 
 type NamespaceValue struct {
 	Namespace Namespace
-	Value     interface{}
+	Value     any
 }
 
 func (nv NamespaceValue) String() string {
@@ -34,10 +34,10 @@ func (nv NamespaceValue) AsField(entry *logrus.Entry) *logrus.Entry {
 }
 
 // MARK: - Functions
-func (l Namespace) WithValue(identifier string) NamespaceValue {
+func (l Namespace) WithValue(value any) NamespaceValue {
 	return NamespaceValue{
 		Namespace: l,
-		Value:     identifier,
+		Value:     value,
 	}
 }
 
