@@ -167,9 +167,6 @@ linters-settings:
     multi-func: false
 
 linters:
-  disable:
-    - staticcheck
-
   enable:
     - asciicheck
     - bidichk
