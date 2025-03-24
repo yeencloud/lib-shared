@@ -9,7 +9,7 @@ import (
 var LoggerCtxKey = "logger"
 
 func GetLoggerFromContext(ctx context.Context) *log.Entry {
-	logger := ctx.Value(LoggerCtxKey)
+	logger := ctx.Value(LoggerCtxKey) //nolint:staticcheck
 	if logger == nil {
 		return log.NewEntry(log.StandardLogger())
 	}
