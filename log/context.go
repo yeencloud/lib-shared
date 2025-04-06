@@ -19,7 +19,7 @@ func GetLoggerFromContext(ctx context.Context) *log.Entry {
 		return log.NewEntry(log.StandardLogger())
 	}
 
-	return entry
+	return entry.WithContext(ctx)
 }
 
 func WithLogger(ctx context.Context, logger *log.Entry) context.Context {
