@@ -1,4 +1,4 @@
-name: Test library
+name: Library CI
 
 on:
   push:
