@@ -78,7 +78,7 @@ func FetchConfig[T any]() (*T, error) {
 		}
 
 		err = handler(field, value)
-		log.WithField(configKey, field.Value()).WithField("default", usingDefault).Debug("Config loaded: %s", configKey)
+		log.WithField(configKey, field.Value()).WithField("default", usingDefault).Debugf("Config loaded: %s", configKey)
 		if err != nil {
 			return nil, err
 		}
