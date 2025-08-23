@@ -1,4 +1,4 @@
-package lib_shared
+package domain
 
 const AppName = "YeenCloud"
 

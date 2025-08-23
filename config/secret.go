@@ -9,7 +9,7 @@ type Secret struct {
 }
 
 func (s Secret) String() string {
-	return fmt.Sprintf("%v (%d)", "***", len(s.Value))
+	return fmt.Sprintf("%v", "***")
 }
 
 func NewSecret(value string) Secret {

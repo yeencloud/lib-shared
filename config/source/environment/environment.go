@@ -10,7 +10,7 @@ type ConfigFromEnvironmentVariables struct {
 }
 
 func NewConfigFromEnvironmentVariables() *ConfigFromEnvironmentVariables {
-	_ = godotenv.Load() // ignoring error, if .env file is not found, we will default to the system environment variables or the default values
+	_ = godotenv.Load() // ignoring error, if .env file is not found, we will fallback to the system environment variables or the default values
 
 	return &ConfigFromEnvironmentVariables{}
 }

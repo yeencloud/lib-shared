@@ -22,7 +22,7 @@ func TestSecret(t *testing.T) {
 		t.Run(tt.test, func(t *testing.T) {
 			secret := NewSecret(tt.value)
 			assert.Equal(t, secret.Value, tt.value)
-			assert.Equal(t, secret.String(), "*** (10)")
+			assert.Equal(t, secret.String(), "***")
 		})
 	}
 }
