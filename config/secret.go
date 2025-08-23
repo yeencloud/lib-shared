@@ -1,15 +1,11 @@
 package config
 
-import (
-	"fmt"
-)
-
 type Secret struct {
 	Value string
 }
 
 func (s Secret) String() string {
-	return fmt.Sprintf("***")
+	return "***"
 }
 
 func NewSecret(value string) Secret {
