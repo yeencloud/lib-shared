@@ -1,6 +1,6 @@
 module github.com/yeencloud/lib-shared
 
-go 1.23
+go 1.25
 
 require (
 	github.com/fatih/structs v1.1.0
