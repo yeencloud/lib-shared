@@ -12,7 +12,7 @@ func (e ConfigurationNotInitializedError) Error() string {
 	return "configuration is not initialized"
 }
 
-func (e ConfigurationNotInitializedError) HowToFix() string {
+func (e ConfigurationNotInitializedError) TroubleshootingTip() string {
 	return "initialize configuration with config.Init()"
 }
 
@@ -37,7 +37,7 @@ func (e UnsupportedConfigTypeError) Error() string {
 	return "unsupported type " + e.Type + " for variable " + e.Variable
 }
 
-func (e UnsupportedConfigTypeError) HowToFix() string {
+func (e UnsupportedConfigTypeError) TroubleshootingTip() string {
 	return fmt.Sprintf("Use any of these supported types: %v", e.AvailableTypes)
 }
 
